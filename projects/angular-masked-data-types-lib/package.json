@@ -1,0 +1,13 @@
+{
+  "name": "@softeq/angular-masked-data-types",
+  "version": "0.0.1",
+  "peerDependencies": {
+    "@angular/common": "^8.0.1",
+    "@angular/core": "^8.0.1",
+    "@softeq/types": "^0.0.1",
+    "@softeq/mls": "^0.0.1",
+    "@softeq/data-types": "^0.0.1",
+    "@softeq/angular-data-types": "^0.0.1",
+    "lodash-es": "^4.17.11"
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "name": "@softeq/mls",
+  "version": "0.0.1",
+  "peerDependencies": {
+    "@softeq/types": "^0.0.1"
+  }
+}

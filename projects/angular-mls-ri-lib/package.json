@@ -1,0 +1,11 @@
+{
+  "name": "@softeq/angular-mls-ri",
+  "version": "0.0.1",
+  "peerDependencies": {
+    "@angular/common": "^8.0.1",
+    "@angular/core": "^8.0.1",
+    "@ngx-translate/core": "^11.0.1",
+    "@softeq/types": "^0.0.1",
+    "@softeq/mls": "^0.0.1"
+  }
+}

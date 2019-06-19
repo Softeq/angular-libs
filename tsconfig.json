@@ -1,0 +1,49 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "baseUrl": "./",
+    "outDir": "./dist/out-tsc",
+    "sourceMap": true,
+    "declaration": false,
+    "downlevelIteration": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "importHelpers": true,
+    "target": "es2015",
+    "typeRoots": [
+      "node_modules/@types"
+    ],
+    "lib": [
+      "es2018",
+      "dom"
+    ],
+    "paths": {
+      "@softeq/types": [
+        "dist/types-lib"
+      ],
+      "@softeq/data-mappers": [
+        "dist/data-mappers-lib"
+      ],
+      "@softeq/mls": [
+        "dist/mls-lib"
+      ],
+      "@softeq/angular-mls-ri": [
+        "dist/angular-mls-ri-lib"
+      ],
+      "@softeq/data-types": [
+        "dist/data-types-lib"
+      ],
+      "@softeq/angular-data-types": [
+        "dist/angular-data-types-lib"
+      ],
+      "@softeq/angular-masked-data-types": [
+        "dist/angular-masked-data-types-lib"
+      ],
+      "test-data": [
+        "dist/test-data-lib"
+      ]
+    }
+  }
+}
