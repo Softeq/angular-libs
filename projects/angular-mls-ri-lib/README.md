@@ -83,7 +83,7 @@ Date format defines set of named formats, like `M/d/yyyy` or `MMM d`.
 
 ## Restrictions
 
-* Formats are retrieved by `@softeq/angular-mls-ri` library using `TranslateService#instant` call.
+* Date and number formats are retrieved using `TranslateService#instant` call.
  This means that translations should be loaded before `MlsProvider` is used first time.
  You should care about this yourself.
 

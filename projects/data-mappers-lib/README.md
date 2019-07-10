@@ -4,10 +4,10 @@
 
 ### Problem
 
-One of task developer has to solve from day to day is data serialization. For example, developer needs to transform data to serializable view to
-* send data via HTTP client
-* store data in local storage
-* store some data in route query parameters
+One of task developer has to solve from day to day is data serialization. For example, developer needs to transform data to serializable view
+* to send data via HTTP client
+* to store data in local storage
+* to store some data in route query parameters
 * etc
 
 In the same time if data was serialized, one day it should be deserialized.
@@ -25,7 +25,8 @@ Developer can call `JSON.stringify` to serialize data and `JSON.parse` to deseri
 
 This approach works well while we have only primitive data (`string`, `number`, `boolean`, etc).
  But this approach will stop working as soon as we have complex objects, like `Date`, `RegExp`, `BitSet`, etc (other objects created by third-party libraries).
- Honestly `Date` object can be transformed to string by `JSON.stringify` method, but anyway `JSON.parse` will not restore it. 
+
+**Note.** Actually `Date` object can be transformed to string by `JSON.stringify` method, but anyway `JSON.parse` will not restore it. 
 
 For example in the following example we have two complex fields `birthday` and `salary`,
 
@@ -72,9 +73,9 @@ Both these functions take too much space even for simple object and moreover the
 Things become more complex when developer has HTTP communication and he/she should take into account headers
  (for example, handling of `ETag`, `If-Match`, `If-None-Match` headers).
 
-### Solution
+### Solution this library proposes
 
-This library promotes concept of `DataMapper` which encapsulates rules to serialize and deserialize objects at the same time
+This library promotes concept of `DataMapper` which can both serialize and deserialize data
 (we will use word **map** instead of serialize/deserialize).
 For `john`, you can define mapper like
 
@@ -85,7 +86,7 @@ const employeeMapper = objectMapper({
 });
 ```
 
-You have to describe only how to **map** all non-primitive data.
+You have to describe **only** how to **map** all non-primitive data.
 
 To serialize `john` using `employeeMapper` you have to write
 ```javascript
@@ -115,7 +116,7 @@ const restoredJohn = employeeMapper.deserialize(serializedJohn);
 // restoredJohn is an object equal by content to original john object
 ```
 
-Actually `bigDecimalMapper` used to map `BigDecimal` does not exist, but we can ease define it.
+Actually `bigDecimalMapper` used to map `BigDecimal` does not exist, but we can easily define it.
  See the following example
 
 ```javascript
@@ -129,7 +130,7 @@ const bigDecimalMapper = createMapper({
 
 #### Composition of mappers
 
-But what if `employee` entity can be a part of `company` entity, like in the following example?
+But what if `employee` entity can be a part of a `company` entity, like in the following example?
 ```javascript
 const company = {
   name: 'Insurance Ltd',
@@ -153,7 +154,7 @@ const company = {
 In this case we can define composed mapper
 ```javascript
 const companyMapper = objectMapper({
-  foundationDate: dateMapper(DateFormat.DateTime), // we have to parse date and time (DateTime),
+  foundationDate: dateMapper(DateFormat.DateTime), // we have to parse date and time (timestamp),
   employees: arrayMapperOf(employeeMapper), // array of employees, here we use employeeMapper defined above
 });
 ```
@@ -167,18 +168,19 @@ const serializedCompany = companyMapper.serialize(company);
 const restoredCompany = companyMapper.deserialize(serializedCompany);
 ```
 
-#### Mapping of HTTP Requests/Responses
+### Mapping of HTTP Requests/Responses
 
 HTTP communications, especially REST-based communications, actively use parts of HTTP protocol (status, method, headers)
  to transfer important information.
 While HTTP request and response has different structure, both of them support headers which sometimes play crucial
- role in making request and response interpretation.  
- For example, it is a common practice to use `ETag` header together with `If-Match` (`If-Non-Match`) header to avoid
+ role in making request and response interpretation.
+
+For example, it is a common practice to use `ETag` header together with `If-Match` (`If-Non-Match`) header to avoid
  lost updates (this technique is called "*optimistic locking*").
  `DataMapper`s can also help in this field and provide reusable composable and ease to use approach
- to support such interactions.
+ to support such kind of communications.
 
-Let's imagine we have a page where we can update employee information. From the REST-based communication point of view
+Let's imagine we have a page where we can update employee information. From the communication point of view
  we need two endpoints: one to get state of resource (`GET`) and another one to update its state (`PUT`).
  In addition we have to avoid *lost updates*, for this purpose our communication protocol supports handling of
  `ETag` and `If-Match` headers (which is, I believe, a common practice).
@@ -217,25 +219,49 @@ Thanks to `ETag`/`If-Match` headers employee will be updated only when its state
  two requests.
 
 Using `@softeq/data-mappers` library this behavior can easily be achieved.
- First of all you have to compose new mapper with *ETag* support 
+ First of all you have to complement `employeeMapper` by `ETag` support 
 ```javascript
 const employeeMapperWithOptimisticLock = httpEtagMapperOf(employeeMapper);
 ```
 
-and use `employeeMapperWithOptimisticLock` to construct `HttpData` for `PUT` call
+and use `employeeMapperWithOptimisticLock` to prepare `HttpData` for `PUT` call (read about `HttpData` structure here below)
 ```javascript
 const johnHttpData = employeeMapperWithOptimisticLock.serialize(john);
 ```
-`HttpData` can be transformed back to the plain JS object for `GET` call
+
+`HttpData` can be transformed back to the plain JS object using the following statement
 ```javascript
 const john = employeeMapperWithOptimisticLock.deserialize(johnHttpData);
 ```
-`HttpData` is a library-agnostic structure which does not depend on specific library used for HTTP communications
- under the hood. See the list of supported libraries/frameworks here below.
 
-`HttpData` provides set of `headers` and `body` field for request/response calls.  
-`HttpDataMapper.deserialize` method used for `GET` call complements `john` entity by `etag` field having value from `ETag` header.
-On the other hand `HttpDataMapper.serialize` method used for `PUT` call moves value from `etag` field to the `If-Match` header.
+To help with mapping of HTTP request and response `@softeq/data-mappers` library proposes two concepts
+* `HttpData`
+* `HttpDataMapper`
+
+#### `HttpData`
+
+`HttpData` is a simple data structure which has the following fields
+ * `headers` for set of headers
+ * `body` which stores serialized body.
+
+`HttpData` allows to avoid dependency from specific HTTP client used for HTTP communications.
+
+In order to use `HttpData` with specific HTTP client you have to use one of integration libraries described here below.
+For example, for Angular framework you can use `@softeq/angular-http-data` package.
+
+#### `HttpDataMapper`
+
+`HttpDataMapper` extends `DataMapper` interface and allows
+* to serialize object to `HttpData` structure
+* to deserialize object from `HttpData` structure
+
+Look at our example here above.  
+For `GET` call we can use `employeeMapperWithOptimisticLock.deserialize` method to transform `HttpData` to `john` object.
+`deserialize` method complements `john` entity by `etag` field having value from `ETag` header.  
+For `PUT` call we can use `employeeMapperWithOptimisticLock.serialize` method to transform `john` object back to `HttpData` structure.
+`serialize` method move value from `etag` field back to the `If-Match` header.
+
+#### Angular example
 
 Although, support of HTTP mappers can sound too complex, it becomes much easier with specific library used for HTTP communications.
 For example, for Angular framework real world example with `@softeq/angular-http-data` library looks like
@@ -254,30 +280,33 @@ class EmployeeRest extends AbstractRestService {
 
 #### Chained `HttpDataMapper`s
 
-`HttpDataMapper`s can be composed (*chained*) together to create more complex `HttpDataMapper` having several mappings.
+Several `HttpDataMapper`s can be composed (*chained*) together to create more complex `HttpDataMapper`.
 
-For example, back to our employee sample. Imagine we need functionality to delete users.
- We have to use `DELETE` endpoint for this purpose
+For example, back to our employee example. Imagine we need functionality to delete users.
+ For this purpose We have to use `DELETE` endpoint
 ```
 DELETE /employees/1 HTTP/1.1
 If-Match: "363d707003c01515b2c627fc15b9e4d88"
 ```
-but this endpoint does not accept body (which is a common practice for `DELETE` endpoints).
-Unfortunately `employeeMapperWithOptimisticLock` do generates body,
- but we can add one more `HttpDataMapper`: `httpConstantBodyMapperOf`, like
+take into account that this endpoint does not accept body (which is a common practice for `DELETE` endpoints).  
+Although `employeeMapperWithOptimisticLock` handles `ETag`/`If-Match` headers it does generate body.
+ We can reset body using another `HttpDataMapper`: `httpConstantBodyMapperOf`.
+ And construct composed `HttpDataMapper` like in the following example
 ```javascript
-httpConstantBodyMapperOf(httpEtagMapperOf(employeeMapper), undefined);
-// or
-httpConstantBodyMapperOf(httpEtagMapperOf(employeeMapper));
+const mapperForDelete = httpConstantBodyMapperOf(httpEtagMapperOf(employeeMapper), undefined);
+// the same as
+const mapperForDelete = httpConstantBodyMapperOf(httpEtagMapperOf(employeeMapper));
 ```
-`httpConstantBodyMapperOf` always returns its second argument as HTTP body.
- Now we can use result `DataMapper` for `DELETE` request,
+`httpConstantBodyMapperOf` always returns its second argument as HTTP body.  
+ Now we can use result `mapperForDelete` for `DELETE` request,
  it behaves as `httpEtagMapperOf` and `httpConstantBodyMapperOf` simultaneously.
 
 Construction of `DataMapper` handling `ETag` and returning empty body can be simplified using `flow` function from `lodash`.
 ```javascript
 const httpEmptyEtagMapperOf = flow(httpConstantBodyMapperOf, httpEtagMapperOf);
 ```
+
+#### Angular example for chained `HttpDataMapper`
 
 For `@softeq/angular-http-data` real world example can look like
 ```typescript
@@ -292,8 +321,8 @@ class EmployeeRest extends AbstractRestService {
 
 You can write own implementation of `HttpDataMapper`, look at implementation of `ETagHttpDataMapper` or `ConstantBodyHttpDataMapper`.
 
-#### Libraries used for HTTP communications
-* Angular, `@softeq/angular-http-data`
+## Integration libraries for `HttpData`/`HttpDataMapper`
+* for Angular, `@softeq/angular-http-data`
 
 ## Build
 

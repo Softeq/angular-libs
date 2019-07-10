@@ -4,7 +4,7 @@
 * base classes to implement common HTTP communications.
 * integration of Angular `HttpClient` with `@softeq/data-mappers` library
 
-#### Base classe to implement common HTTP communications
+#### Base classes to implement common HTTP communications
 
 This library provides helpers to implement REST-like communications.
 1. First of all you have to setup this library.
@@ -21,7 +21,7 @@ This library provides helpers to implement REST-like communications.
    ```
    where `baseUrl` points to basic part of URL all subsequent requests will be resolved upon.
 
-2. After library was setup you can create service extended from `AbstractRestService` for REST-like communications
+2. Create service that extends `AbstractRestService`
    ```typescript
    class EmployeeRest extends AbstractRestService {
      get(id: number): Observable<Employee> {
@@ -36,7 +36,7 @@ This library provides helpers to implement REST-like communications.
    where `httpGet` and `httpPut` methods accept
    * URL resolved upon `baseUrl`.
    * body (only for `httpPut` method)
-   * The last parameter for all `http*` methods is always `DataMapper`  
+   * `DataMapper` (the last parameter for all `http*` methods)  
 
 There are several `http*` methods defined in `AbstractRestService`:
 * `httpGet` for `GET` request
@@ -64,12 +64,11 @@ but in this case you have to map requests/responses manually.
   parseResponseWithMapper<T>(response: HttpResponse<T>,
                              responseMapper?: HttpDataMapper<T>): T
   ```
-  retrieves response body and transforms it using provided `responseMapper`.
+  transforms response using provided `responseMapper`.
 
 #### Support of pageable REST resources
 
-Tables often show data by pages or have integrated infinite scroll, where only visible part of content is fetched
- from the server.  
+Tables often show data by pages or have infinite scroll, where only visible part of content is fetched from the server.  
 In both cases we have to return data by chunks. `@softeq/angular-http-data` library provides `AbstractPaginationRestService`
  to implement such behavior.
 
@@ -110,7 +109,8 @@ There are several `createSlicedDataSource*` methods defined in `AbstractPaginati
 * `createSlicedDataSourcePost` for `POST` request
 * `createSlicedDataSource` allows to send request of any method
 
-`AbstractPaginationRestService` is opinionated regarding protcol used for paging.
+##### Protocol `AbstractPaginationRestService` relies on
+`AbstractPaginationRestService` is opinionated regarding protocol used for paging.
  It uses `Range` header to perform request.
 ```
 Range: items=0-24
@@ -120,6 +120,21 @@ The server should respond with a `Content-Range` header to indicate how many ite
 
 ```
 Content-Range: items 0-24/66
+```
+
+Body of response should be a chunk (`Array`) of retrieved data.
+```json
+[
+  {
+    "id": 1,
+    "name": "John"
+  },
+  {
+    "id": 2,
+    "name": "Mark"
+  },
+  ...
+]
 ```
 
 ## Code scaffolding
