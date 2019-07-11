@@ -9,7 +9,7 @@ import {
   DataTypeParseResult,
   dataTypeParseSuccess, DataTypeValidationErrors,
   DateTimeType,
-  DateTypeDefinition
+  DateTimeTypeDefinition
 } from '../type.interfaces';
 import { AbstractBaseType, DataTypeContext } from './abstract-type';
 import { Maybe } from '@softeq/types';
@@ -34,7 +34,7 @@ export class DateTimeTypeImpl extends AbstractBaseType<Date> implements DateTime
   kind = DATA_TYPE_DATE_KIND;
   localization: MlsDateTimeLocalization;
 
-  constructor(public definition: DateTypeDefinition) {
+  constructor(public definition: DateTimeTypeDefinition) {
     super(definition, dateTypeValidators);
   }
 

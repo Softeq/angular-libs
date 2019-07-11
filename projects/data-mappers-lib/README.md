@@ -322,7 +322,7 @@ class EmployeeRest extends AbstractRestService {
 You can write own implementation of `HttpDataMapper`, look at implementation of `ETagHttpDataMapper` or `ConstantBodyHttpDataMapper`.
 
 ## Integration libraries for `HttpData`/`HttpDataMapper`
-* for Angular, `@softeq/angular-http-data`
+* for Angular use [`@softeq/angular-http-data`](../angular-http-data-lib/README.md)
 
 ## Build
 

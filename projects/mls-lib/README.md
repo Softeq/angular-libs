@@ -18,7 +18,7 @@ Although this library was initially designed for Angular, now it does not depend
 
 ## Implementations of `@softeq/mls` contract
 
-* `@softeq/angular-mls-ri` is a reference implementation for Angular that relies on
+* [`@softeq/angular-mls-ri`](../angular-mls-ri-lib/README.md) is a reference implementation for Angular that relies on
   * `@ngx-translate/core` to provide translations
   * embedded Angular capabilities for number & date formatting
   * and implements the simplest parsing of number & date values. 

@@ -1,6 +1,6 @@
 # @softeq/angular-mls-ri
 
-Reference implementation of `@softeq/mls` contract.
+Reference implementation of [`@softeq/mls`](../mls-lib/README.md) contract.
 
 `@softeq/angular-mls-ri` is based on
 * `@ngx-translate/core` to provide translations

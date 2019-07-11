@@ -22,7 +22,7 @@ export {
   DataTypeParseSuccessResult,
   DataTypeValidationErrors,
   DataTypeValidator, DataTypeValidatorFactory, DateRangeConstraint,
-  DateTimeType, DateTypeDefinition, DateValueConstraint,
+  DateTimeType, DateTimeTypeDefinition, DateValueConstraint,
   isDataTypeParseError,
   isDataTypeParseSuccess, NumberRangeConstraint,
   NumberType, NumberTypeDefinition, NumberValueConstraint, TextRangeLengthConstraint,

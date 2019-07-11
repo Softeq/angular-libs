@@ -10,7 +10,7 @@ import {
   DataType,
   DataTypeDefinition,
   DateTimeType,
-  DateTypeDefinition,
+  DateTimeTypeDefinition,
   NumberType,
   NumberTypeDefinition,
   TextType,
@@ -65,7 +65,7 @@ export function textType(baseTypeOrDefinition?: SupplierFn<TextType> | TextType 
  *
  * @param def definition of the type defines all type-related capabilities
  */
-export function dateTimeType(def: DateTypeDefinition): DateTimeType;
+export function dateTimeType(def: DateTimeTypeDefinition): DateTimeType;
 /**
  * Constructor for date type that inherits all settings from the base type
  *
@@ -73,9 +73,9 @@ export function dateTimeType(def: DateTypeDefinition): DateTimeType;
  * @param def definition of the type defines all type-related capabilities
  */
 export function dateTimeType(baseType: SupplierFn<DateTimeType> | DateTimeType,
-                             def?: DateTypeDefinition): DateTimeType;
-export function dateTimeType(baseTypeOrDefinition: SupplierFn<DateTimeType> | DateTimeType | DateTypeDefinition,
-                             def?: DateTypeDefinition): DateTimeType {
+                             def?: DateTimeTypeDefinition): DateTimeType;
+export function dateTimeType(baseTypeOrDefinition: SupplierFn<DateTimeType> | DateTimeType | DateTimeTypeDefinition,
+                             def?: DateTimeTypeDefinition): DateTimeType {
   return createDataType(DATA_TYPE_DATE_KIND, DateTimeTypeImpl, baseTypeOrDefinition as any, def);
 }
 

@@ -2,7 +2,7 @@
 
 `@softeq/angular-http-data` provides
 * base classes to implement common HTTP communications.
-* integration of Angular `HttpClient` with `@softeq/data-mappers` library
+* integration of Angular `HttpClient` with [`@softeq/data-mappers`](../data-mappers-lib/README.md) library
 
 #### Base classes to implement common HTTP communications
 

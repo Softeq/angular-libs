@@ -90,7 +90,19 @@ export interface DataType<T> {
    */
   validateFormat(str?: string): Maybe<DataTypeValidationErrors>;
 
+  /**
+   * Checks whether two values are equal or do not
+   * @param first
+   * @param second
+   */
   equals(first: T, second: T): boolean;
+
+  /**
+   * Checks order of two values relative to each other.
+   *
+   * @param first
+   * @param second
+   */
   compare(first: T, second: T): number;
 }
 /**
@@ -115,7 +127,7 @@ export interface NumberType extends DataType<number> {
  */
 export interface DateTimeType extends DataType<Date> {
   kind: 'date';
-  definition: DateTypeDefinition;
+  definition: DateTimeTypeDefinition;
   localization: MlsDateTimeLocalization;
 }
 
@@ -154,7 +166,6 @@ export interface TextTypeDefinition extends DataTypeDefinition {
     minLength: MlsRecord;
     rangeLength: MlsRecord;
     pattern: MlsRecord;
-    format: MlsRecord;
     [name: string]: MlsRecord;
   }>;
 }
@@ -199,7 +210,7 @@ export interface NumberTypeDefinition extends DataTypeDefinition {
 /**
  * Date type definition
  */
-export interface DateTypeDefinition extends DataTypeDefinition {
+export interface DateTimeTypeDefinition extends DataTypeDefinition {
   format?: string;
   constraints?: Partial<{
     min: DateValueConstraint;
