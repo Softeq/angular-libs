@@ -11,7 +11,7 @@ import { DataTypeValidateOption } from '../directives/data-type.directive';
 
 @Component({
   selector: 'sq-data-type-test-host',
-  template: `<input type="test" [sqDataType]="type" [sqDataTypeValidate]="validateOption" [ngModel]="value">`,
+  template: `<input type="text" [sqDataType]="type" [sqDataTypeValidate]="validateOption" [ngModel]="value">`,
 })
 class DataTypeTestHostComponent {
   @Input() value: any;

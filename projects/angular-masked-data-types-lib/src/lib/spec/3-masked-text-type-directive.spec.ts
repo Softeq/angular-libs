@@ -20,7 +20,7 @@ const TEXT_INVALID_VALUE = '332';
 
 @Component({
   selector: 'sq-masked-text-type-test-host',
-  template: `<input type="test" [sqMaskedTextType]="type" [ngModel]="value">`,
+  template: `<input type="text" [sqMaskedTextType]="type" [ngModel]="value">`,
 })
 class MaskedTextTypeTestHostComponent {
   @Input() value: any;

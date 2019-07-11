@@ -26,14 +26,14 @@ const NUMBER_INVALID_TEXT_VALUE = '12,345.678sss';
   selector: 'sq-masked-number-type-test-host',
   template: `
     <ng-container *ngIf="formatOnFocusQuery">
-      <input type="test"
+      <input type="text"
              [ngModel]="value"
              [sqMaskedNumberType]="type"
              [sqMaskedNumberTypeFormatOnFocus]="formatOnFocus"
              [sqMaskedNumberTypeFormatOnFocusQuery]="formatOnFocusQuery">
     </ng-container>
     <ng-container *ngIf="!formatOnFocusQuery">
-      <input type="test"
+      <input type="text"
              [ngModel]="value"
              [sqMaskedNumberType]="type"
              [sqMaskedNumberTypeFormatOnFocus]="formatOnFocus">
