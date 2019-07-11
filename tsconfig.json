@@ -43,6 +43,9 @@
       ],
       "test-data": [
         "dist/test-data-lib"
+      ],
+      "@softeq/angular-lazy": [
+        "dist/angular-lazy-lib"
       ]
     }
   }

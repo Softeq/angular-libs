@@ -1,0 +1,10 @@
+{
+  "name": "@softeq/angular-lazy",
+  "version": "0.0.1",
+  "peerDependencies": {
+    "@angular/core": "^8.0.1",
+    "@angular/router": "^8.0.1",
+    "@softeq/types": "^0.0.1",
+    "lodash-es": "^4.17.11"
+  }
+}
