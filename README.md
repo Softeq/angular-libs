@@ -9,3 +9,4 @@ This repository has the following libraries:
 * [`@softeq/angular-http-data`](projects/angular-http-data-lib/README.md)
 * [`@softeq/angular-data-types`](projects/angular-data-types-lib/README.md)
 * [`@softeq/angular-masked-data-types`](projects/angular-masked-data-types-lib/README.md)
+* [`@softeq/angular-lazy`](projects/angular-lazy-lib/README.md)
