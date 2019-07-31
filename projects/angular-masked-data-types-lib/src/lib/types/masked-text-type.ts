@@ -3,7 +3,7 @@
 
 import { createDataType, DataType, DataTypeContext, TextType, TextTypeDefinition, TextTypeImpl } from '@softeq/data-types';
 import { Locale } from '@softeq/mls';
-import { isNil } from 'lodash-es';
+import isNil from 'lodash/isNil';
 import { SupplierFn } from '@softeq/types';
 
 export interface MaskedTextTypeDefinition extends TextTypeDefinition {

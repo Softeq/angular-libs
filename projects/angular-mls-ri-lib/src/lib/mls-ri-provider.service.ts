@@ -12,7 +12,7 @@ import {
   setMlsRecordParams
 } from './utils';
 import { Hash } from '@softeq/types';
-import { isNil } from 'lodash-es';
+import isNil from 'lodash/isNil';
 import { RiDateTimeLocalization, RiNumberLocalization } from './localization';
 import {
   MlsDateTimeLocalization,
@@ -111,11 +111,11 @@ export class MlsRiProviderService implements MlsProvider {
   private createDateTimeLocalization(locale: Locale): MlsDateTimeLocalization {
     const localization = this.translateService.instant('$localization');
     if (isNil(localization)) {
-      throw new Error(`Property 'localization' is not specified for locale '${locale.toLocaleId()}'`);
+      throw new Error(`Property '$localization' is not specified for locale '${locale.toLocaleId()}'`);
     }
     const { dateFormat } = localization;
     if (isNil(dateFormat)) {
-      throw new Error(`Property 'localization.dateFormat' is not specified for locale '${locale.toLocaleId()}'`);
+      throw new Error(`Property '$localization.dateFormat' is not specified for locale '${locale.toLocaleId()}'`);
     }
 
     return new RiDateTimeLocalization(locale, dateFormat);
@@ -124,11 +124,11 @@ export class MlsRiProviderService implements MlsProvider {
   private createNumberLocalization(locale: Locale): MlsNumberLocalization {
     const localization = this.translateService.instant('$localization');
     if (isNil(localization)) {
-      throw new Error(`Property 'localization' is not specified for locale '${locale.toLocaleId()}'`);
+      throw new Error(`Property '$localization' is not specified for locale '${locale.toLocaleId()}'`);
     }
     const { numberFormat } = localization;
     if (isNil(numberFormat)) {
-      throw new Error(`Property 'localization.numberFormat' is not specified for locale '${locale.toLocaleId()}'`);
+      throw new Error(`Property '$localization.numberFormat' is not specified for locale '${locale.toLocaleId()}'`);
     }
 
     return new RiNumberLocalization(locale, numberFormat);

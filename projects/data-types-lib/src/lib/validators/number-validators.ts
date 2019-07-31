@@ -1,7 +1,13 @@
 // Developed by Softeq Development Corporation
 // http://www.softeq.com
 
-import { gt, gte, isArray, isNil, isNumber, lt, lte } from 'lodash-es';
+import gt from 'lodash/gt';
+import gte from 'lodash/gte';
+import isArray from 'lodash/isArray';
+import isNil from 'lodash/isNil';
+import isNumber from 'lodash/isNumber';
+import lt from 'lodash/lt';
+import lte from 'lodash/lte';
 import { DataTypeValidator, NumberRangeConstraint, NumberValueConstraint } from '../type.interfaces';
 import { coalesce } from './validator.utils';
 

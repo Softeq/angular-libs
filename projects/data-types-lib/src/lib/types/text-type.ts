@@ -12,7 +12,8 @@ import {
 import { AbstractBaseType } from './abstract-type';
 import { Maybe } from '@softeq/types';
 import { getDebugTypeName } from '../type.utils';
-import { isNil, isString } from 'lodash-es';
+import isNil from 'lodash/isNil';
+import isString from 'lodash/isString';
 import { textTypeValidators } from '../validators/text-validators';
 
 function createNoValueError(): Error {

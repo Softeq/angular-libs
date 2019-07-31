@@ -2,9 +2,6 @@
   "$schema": "../../node_modules/ng-packagr/ng-package.schema.json",
   "dest": "../../dist/angular-data-types-lib",
   "lib": {
-    "entryFile": "src/public-api.ts",
-    "umdModuleIds": {
-      "lodash-es": "_"
-    }
+    "entryFile": "src/public-api.ts"
   }
 }

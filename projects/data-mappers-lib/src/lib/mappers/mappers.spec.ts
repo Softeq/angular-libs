@@ -1,7 +1,7 @@
 // Developed by Softeq Development Corporation
 // http://www.softeq.com
 
-import { omit } from 'lodash-es';
+import omit from 'lodash/omit';
 import {
   arrayMapperOf,
   cloneMapper,

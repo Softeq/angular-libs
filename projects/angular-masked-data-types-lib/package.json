@@ -8,6 +8,6 @@
     "@softeq/mls": "^0.0.1",
     "@softeq/data-types": "^0.0.1",
     "@softeq/angular-data-types": "^0.0.1",
-    "lodash-es": "^4.17.11"
+    "lodash": "^4.17.11"
   }
 }

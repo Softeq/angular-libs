@@ -1,7 +1,8 @@
 // Developed by Softeq Development Corporation
 // http://www.softeq.com
 
-import { isNil, invert } from 'lodash-es';
+import isNil from 'lodash/isNil';
+import invert from 'lodash/invert';
 
 import { DataMapper } from './mapper.interfaces';
 

@@ -6,7 +6,7 @@ import { MlsDateTimeLocalization, Locale } from '@softeq/mls';
 import { Hash, Maybe } from '@softeq/types';
 import { isDateValid, isDateValidFormat, parseDate } from './date-parser';
 import { ValidationErrors } from '@angular/forms';
-import { isNil } from 'lodash-es';
+import isNil from 'lodash/isNil';
 
 export class RiDateTimeLocalization implements MlsDateTimeLocalization {
   constructor(private locale: Locale,

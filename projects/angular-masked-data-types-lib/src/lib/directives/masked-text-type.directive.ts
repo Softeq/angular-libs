@@ -4,7 +4,9 @@
 import { Directive, ElementRef, HostListener, Input, OnInit, Renderer2 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { DATA_TYPE_MASKED_TEXT_KIND, MaskedTextType, MaskedTextTypeImpl } from '../types/masked-text-type';
-import { isNil, isString, noop } from 'lodash-es';
+import isNil from 'lodash/isNil';
+import isString from 'lodash/isString';
+import noop from 'lodash/noop';
 import { DataTypeService } from '@softeq/angular-data-types';
 import { createTextMaskInputElement } from 'text-mask-core/dist/textMaskCore';
 

@@ -4,7 +4,8 @@
 import { Inject, Injectable, InjectionToken, Optional } from '@angular/core';
 import { MlsProvider } from '@softeq/mls';
 import { Hash, Maybe } from '@softeq/types';
-import { assign, clone } from 'lodash-es';
+import assign from 'lodash/assign';
+import clone from 'lodash/clone';
 import { DataType, DataTypeContext } from '@softeq/data-types';
 
 export interface DataTypeInitializer {

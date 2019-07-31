@@ -1,7 +1,7 @@
 // Developed by Softeq Development Corporation
 // http://www.softeq.com
 
-import { isNumber } from 'lodash-es';
+import isNumber from 'lodash/isNumber';
 
 const DOLLAR_SIGN = '$';
 const EMPTY_STRING = '';

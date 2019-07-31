@@ -3,7 +3,7 @@
 
 import { Hash, Maybe } from '@softeq/types';
 import { MlsDateTimeLocalization, Locale, MlsNumberLocalization, MlsRecord, MlsValidationErrors } from '@softeq/mls';
-import { isNil } from 'lodash-es';
+import isNil from 'lodash/isNil';
 
 export const DATA_TYPE_TEXT_KIND: 'text' = 'text';
 export const DATA_TYPE_NUMBER_KIND: 'number' = 'number';

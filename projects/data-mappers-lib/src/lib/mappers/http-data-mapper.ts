@@ -1,7 +1,7 @@
 // Developed by Softeq Development Corporation
 // http://www.softeq.com
 
-import { isNil } from 'lodash-es';
+import isNil from 'lodash/isNil';
 import { DataMapper } from './mapper.interfaces';
 
 export interface HeadersData {

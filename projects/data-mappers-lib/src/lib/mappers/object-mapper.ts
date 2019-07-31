@@ -1,7 +1,9 @@
 // Developed by Softeq Development Corporation
 // http://www.softeq.com
 
-import { clone, isNil, isObject } from 'lodash-es';
+import clone from 'lodash/clone';
+import isNil from 'lodash/isNil';
+import isObject from 'lodash/isObject';
 import { DataMapper, JSONObject } from './mapper.interfaces';
 
 export class ObjectMapper<Entity, ID> implements DataMapper<Entity, JSONObject> {

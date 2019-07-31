@@ -3,7 +3,9 @@
 
 import { Directive, ElementRef, HostListener, Inject, InjectionToken, Input, OnInit, Renderer2 } from '@angular/core';
 import { AbstractControl, ControlValueAccessor, NG_VALIDATORS, NG_VALUE_ACCESSOR, ValidationErrors, Validator } from '@angular/forms';
-import { isEqual, isNil, isString, noop } from 'lodash-es';
+import isNil from 'lodash/isNil';
+import isString from 'lodash/isString';
+import noop from 'lodash/noop';
 import { DataType, DataTypeValidationErrors } from '@softeq/data-types';
 import { DataTypeService } from '../services/data-type.service';
 

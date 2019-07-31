@@ -2,7 +2,7 @@
 // http://www.softeq.com
 
 import { Hash, Maybe } from '@softeq/types';
-import { isEmpty } from 'lodash-es';
+import isEmpty from 'lodash/isEmpty';
 
 export interface RiMlsRecordNormalized {
   key: string;

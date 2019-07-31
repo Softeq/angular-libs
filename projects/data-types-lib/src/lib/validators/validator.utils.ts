@@ -1,7 +1,9 @@
 // Developed by Softeq Development Corporation
 // http://www.softeq.com
 
-import { fromPairs, isNil, keysIn } from 'lodash-es';
+import fromPairs from 'lodash/fromPairs';
+import isNil from 'lodash/isNil';
+import keysIn from 'lodash/keysIn';
 import { Hash, Maybe } from '@softeq/types';
 import { DataTypeValidationErrors, DataTypeValidator, DataTypeValidatorFactory } from '../type.interfaces';
 

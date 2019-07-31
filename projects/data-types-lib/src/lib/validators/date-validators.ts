@@ -1,7 +1,13 @@
 // Developed by Softeq Development Corporation
 // http://www.softeq.com
 
-import { gt, gte, isArray, isDate, isNil, lt, lte } from 'lodash-es';
+import gt from 'lodash/gt';
+import gte from 'lodash/gte';
+import isArray from 'lodash/isArray';
+import isDate from 'lodash/isDate';
+import isNil from 'lodash/isNil';
+import lt from 'lodash/lt';
+import lte from 'lodash/lte';
 import { DataTypeValidator, DateRangeConstraint, DateValueConstraint } from '../type.interfaces';
 import { coalesce } from './validator.utils';
 

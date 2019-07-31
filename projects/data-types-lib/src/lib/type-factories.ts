@@ -1,7 +1,9 @@
 // Developed by Softeq Development Corporation
 // http://www.softeq.com
 
-import { create, extend, isObject, negate } from 'lodash-es';
+import create from 'lodash/create';
+import isObject from 'lodash/isObject';
+import negate from 'lodash/negate';
 import { Constructor, Maybe, SupplierFn } from '@softeq/types';
 import {
   DATA_TYPE_DATE_KIND,

@@ -1,7 +1,8 @@
 // Developed by Softeq Development Corporation
 // http://www.softeq.com
 
-import { isArray, isEmpty } from 'lodash-es';
+import isArray from 'lodash/isArray';
+import isEmpty from 'lodash/isEmpty';
 import { DataTypeValidator, TextRangeLengthConstraint } from '../type.interfaces';
 
 function rangeLength(constraint: TextRangeLengthConstraint): DataTypeValidator {

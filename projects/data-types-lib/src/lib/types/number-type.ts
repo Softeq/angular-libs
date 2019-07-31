@@ -11,7 +11,8 @@ import {
 } from '../type.interfaces';
 import { AbstractBaseType, DataTypeContext } from './abstract-type';
 import { Maybe } from '@softeq/types';
-import { isNil, isNumber } from 'lodash-es';
+import isNil from 'lodash/isNil';
+import isNumber from 'lodash/isNumber';
 import { Locale, MlsNumberFormatQuery, MlsNumberLocalization } from '@softeq/mls';
 import { getDebugTypeName } from '../type.utils';
 import { numberTypeValidators } from '../validators/number-validators';

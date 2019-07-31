@@ -4,7 +4,7 @@
   "peerDependencies": {
     "@angular/common": "^8.0.1",
     "@angular/core": "^8.0.1",
-    "lodash-es": "^4.17.11",
+    "lodash": "^4.17.11",
     "@softeq/data-mappers": "0.0.1"
   }
 }

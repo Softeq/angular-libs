@@ -1,7 +1,10 @@
 // Developed by Softeq Development Corporation
 // http://www.softeq.com
 
-import { assign, create, isNil, mapValues } from 'lodash-es';
+import assign from 'lodash/assign';
+import create from 'lodash/create';
+import isNil from 'lodash/isNil';
+import mapValues from 'lodash/mapValues';
 import {
   DataType,
   DataTypeDefinition,

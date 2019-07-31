@@ -1,7 +1,8 @@
 // Developed by Softeq Development Corporation
 // http://www.softeq.com
 
-import { isNil, omitBy } from 'lodash-es';
+import isNil from 'lodash/isNil';
+import omitBy from 'lodash/omitBy';
 import {
   HttpErrorResponse,
   HttpEvent,

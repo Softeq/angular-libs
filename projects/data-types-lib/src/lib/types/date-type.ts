@@ -1,7 +1,8 @@
 // Developed by Softeq Development Corporation
 // http://www.softeq.com
 
-import { isDate, isNil } from 'lodash-es';
+import isDate from 'lodash/isDate';
+import isNil from 'lodash/isNil';
 
 import {
   DATA_TYPE_DATE_KIND,

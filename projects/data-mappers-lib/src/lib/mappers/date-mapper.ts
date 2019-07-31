@@ -3,7 +3,8 @@
 
 // tslint:disable:no-magic-numbers
 
-import { isNil, padStart } from 'lodash-es';
+import isNil from 'lodash/isNil';
+import padStart from 'lodash/padStart';
 
 import { DataMapper } from './mapper.interfaces';
 

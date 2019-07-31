@@ -7,7 +7,9 @@ import { Hash, Maybe } from '@softeq/types';
 import { Injectable } from '@angular/core';
 import { DATA_TYPE_MASKED_TEXT_KIND, MaskedTextType } from '../types/masked-text-type';
 import { createNumberMask } from './create-number-mask';
-import { isArray, isNil, isNumber } from 'lodash-es';
+import isArray from 'lodash/isArray';
+import isNil from 'lodash/isNil';
+import isNumber from 'lodash/isNumber';
 
 @Injectable()
 export class MaskedDataTypeInitializer implements DataTypeInitializer {

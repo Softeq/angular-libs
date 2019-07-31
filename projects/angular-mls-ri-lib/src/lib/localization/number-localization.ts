@@ -5,7 +5,7 @@ import { formatNumber } from '@angular/common';
 import { Locale, MlsNumberFormatQuery, MlsNumberLocalization } from '@softeq/mls';
 import { Hash, Maybe } from '@softeq/types';
 import { ValidationErrors } from '@angular/forms';
-import { isNil } from 'lodash-es';
+import isNil from 'lodash/isNil';
 
 const SIGN_PART_INDEX = 1;
 const INTEGRAL_PART_INDEX = 4;

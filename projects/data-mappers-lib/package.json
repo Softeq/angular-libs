@@ -3,6 +3,6 @@
   "version": "0.0.1",
   "main": "./bundles/data-mappers-lib.umd.js",
   "peerDependencies": {
-    "lodash-es": "^4.17.11"
+    "lodash": "^4.17.11"
   }
 }

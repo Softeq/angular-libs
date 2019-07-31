@@ -2,7 +2,8 @@
 // http://www.softeq.com
 
 import { Pipe, PipeTransform } from '@angular/core';
-import { isNil, isString } from 'lodash-es';
+import isNil from 'lodash/isNil';
+import isString from 'lodash/isString';
 import { DataTypeService } from '../services/data-type.service';
 import { DataType } from '@softeq/data-types';
 

@@ -1,7 +1,8 @@
 // Developed by Softeq Development Corporation
 // http://www.softeq.com
 
-import { isNull, omit } from 'lodash-es';
+import isNull from 'lodash/isNull';
+import omit from 'lodash/omit';
 import {DataMapper, ETagSupport} from './mapper.interfaces';
 import { HeadersData, HttpDataMapper } from './http-data-mapper';
 

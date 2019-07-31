@@ -2,7 +2,10 @@
 // http://www.softeq.com
 
 import { Maybe } from '@softeq/types';
-import { compact, find, isNil, trim } from 'lodash-es';
+import compact from 'lodash/compact';
+import find from 'lodash/find';
+import isNil from 'lodash/isNil';
+import trim from 'lodash/trim';
 import { Locale, MlsNumberLocalization } from '@softeq/mls';
 import {
   AbstractBaseType,

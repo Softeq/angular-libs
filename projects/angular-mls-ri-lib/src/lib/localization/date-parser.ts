@@ -1,7 +1,10 @@
 // Developed by Softeq Development Corporation
 // http://www.softeq.com
 
-import { filter, isEmpty, isNil, negate } from 'lodash-es';
+import filter from 'lodash/filter';
+import isEmpty from 'lodash/isEmpty';
+import isNil from 'lodash/isNil';
+import negate from 'lodash/negate';
 
 // tslint:disable-next-line:max-line-length
 const FORMAT_REGEXP = /(\[[^\[]*\])|(\\)?([Hh]mm(ss)?|Mo|MM?M?M?|Do|DDDo|DD?D?D?|ddd?d?|do?|w[o|w]?|W[o|W]?|Qo?|yyyyyy|yyyyy|yyyy|yy|gg(ggg?)?|GG(GGG?)?|e|E|a|A|hh?|HH?|kk?|mm?|ss?|S{1,9}|x|X|zz?|ZZ?|.)/g;

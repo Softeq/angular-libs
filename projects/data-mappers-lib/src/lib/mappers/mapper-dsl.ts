@@ -1,7 +1,9 @@
 // Developed by Softeq Development Corporation
 // http://www.softeq.com
 
-import { cloneDeep, identity, noop } from 'lodash-es';
+import cloneDeep from 'lodash/cloneDeep';
+import identity from 'lodash/identity';
+import noop from 'lodash/noop';
 
 import { Enum } from '../enum';
 import { ArrayDataMapper } from './array-data-mapper';

@@ -3,7 +3,9 @@
 
 import { Inject, Injectable, InjectionToken } from '@angular/core';
 
-import { each, isNil, uniqueId } from 'lodash-es';
+import each from 'lodash/each';
+import isNil from 'lodash/isNil';
+import uniqueId from 'lodash/uniqueId';
 
 import { Hash } from '@softeq/types';
 import { Locale } from '@softeq/mls';

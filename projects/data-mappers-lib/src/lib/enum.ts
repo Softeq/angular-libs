@@ -3,7 +3,11 @@
 
 // tslint:disable:variable-name
 
-import { isNil, extend, invert, mapValues, values } from 'lodash-es';
+import isNil from 'lodash/isNil';
+import extend from 'lodash/extend';
+import invert from 'lodash/invert';
+import mapValues from 'lodash/mapValues';
+import values from 'lodash/values';
 
 /**
  * This interface defines operations supported by enumeration
