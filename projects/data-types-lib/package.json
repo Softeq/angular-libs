@@ -1,9 +1,29 @@
 {
   "name": "@softeq/data-types",
-  "version": "0.0.1",
+  "version": "1.0.0-beta.1",
+  "description": "Centralizes and promotes work with similar primitive data",
+  "keywords": [
+    "localization",
+    "internalization",
+    "l10n",
+    "i18n",
+    "multi-language support",
+    "locale",
+    "formatting",
+    "parsing",
+    "number",
+    "date",
+    "data type"
+  ],
   "peerDependencies": {
-    "@softeq/types": "^0.0.1",
-    "@softeq/mls": "^0.0.1",
-    "lodash": "^4.17.11"
-  }
+    "@softeq/types": "^1.0.0-beta.1",
+    "@softeq/mls": "^1.0.0-beta.1",
+    "lodash": "^4.17.0"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Softeq/angular-libs"
+  },
+  "homepage": "https://github.com/Softeq/angular-libs"
 }

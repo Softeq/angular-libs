@@ -1,7 +1,27 @@
 {
   "name": "@softeq/mls",
-  "version": "0.0.1",
+  "version": "1.0.0-beta.1",
+  "description": "Contract for locale-dependent operations",
+  "keywords": [
+    "localization",
+    "internalization",
+    "translation",
+    "l10n",
+    "i18n",
+    "multi-language support",
+    "locale",
+    "formatting",
+    "parsing",
+    "number",
+    "date"
+  ],
   "peerDependencies": {
-    "@softeq/types": "^0.0.1"
-  }
+    "@softeq/types": "^1.0.0-beta.1"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Softeq/angular-libs"
+  },
+  "homepage": "https://github.com/Softeq/angular-libs"
 }

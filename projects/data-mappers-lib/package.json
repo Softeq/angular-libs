@@ -1,9 +1,17 @@
 {
   "name": "@softeq/data-mappers",
-  "version": "0.0.1",
+  "version": "1.0.0-beta.1",
   "main": "./bundles/data-mappers-lib.umd.js",
+  "description": "Lightweight library which simplifies serialization/deserialization tasks.",
+  "keywords": ["data mapping", "data mappers", "serialization", "deserialization", "json"],
   "peerDependencies": {
-    "lodash": "^4.17.11",
-    "@softeq/types": "^0.0.1"
-  }
+    "lodash": "^4.17.0",
+    "@softeq/types": "^1.0.0-beta.1"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Softeq/angular-libs"
+  },
+  "homepage": "https://github.com/Softeq/angular-libs"
 }

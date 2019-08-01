@@ -1,14 +1,34 @@
 {
   "name": "@softeq/angular-mls-ri",
-  "version": "0.0.1",
+  "version": "1.0.0-beta.1",
+  "description": "Reference implementation of @softeq/mls contract",
+  "keywords": [
+    "localization",
+    "internalization",
+    "translation",
+    "l10n",
+    "i18n",
+    "multi-language support",
+    "locale",
+    "formatting",
+    "parsing",
+    "number",
+    "date"
+  ],
   "peerDependencies": {
-    "@angular/common": "^8.0.1",
-    "@angular/core": "^8.0.1",
+    "@angular/common": "^8.0.0",
+    "@angular/core": "^8.0.0",
     "@ngx-translate/core": "^11.0.1",
-    "@softeq/types": "^0.0.1",
-    "@softeq/mls": "^0.0.1"
+    "@softeq/types": "^1.0.0-beta.1",
+    "@softeq/mls": "^1.0.0-beta.1"
   },
   "devDependencies": {
     "@softeq/test-data": "^0.0.1"
-  }
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Softeq/angular-libs"
+  },
+  "homepage": "https://github.com/Softeq/angular-libs"
 }
