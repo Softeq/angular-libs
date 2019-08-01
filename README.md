@@ -38,3 +38,21 @@ npm run prepare -- data-types-lib
 npm run prepare -- angular-masked-data-types-lib
 ``` 
 Prepares library for publishing, built library can be found in `dist` directory
+
+## How to publish
+
+1. Login into npm with `@softeq` scope
+    ```
+    npm login --scope=@softeq    
+    ```
+1. Prepare package to publish
+    ```
+    npm run prepare -- <package name>
+    # for example
+    # npm run prepare -- angular-masked-data-types-lib
+    ```
+1. Go to `dist/<package name>` directory (for example, `dist/angular-masked-data-types-lib`)
+1. Publish target package
+    ```
+    npm publish --access=public
+    ```
