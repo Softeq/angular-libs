@@ -4,7 +4,7 @@
 import { Injectable, Injector } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { isNil } from 'lodash-es';
+import isNil from 'lodash/isNil';
 
 import { from, Observable } from 'rxjs';
 

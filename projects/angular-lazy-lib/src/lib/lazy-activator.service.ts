@@ -6,7 +6,7 @@ import { ActivatedRouteSnapshot, CanActivate } from '@angular/router';
 
 import { Hash } from '@softeq/types';
 
-import { initial } from 'lodash-es';
+import initial from 'lodash/initial';
 
 import { LazyRegistry } from './lazy-registry.service';
 
