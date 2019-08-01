@@ -2,13 +2,9 @@
   "name": "angular-sq-libraries",
   "version": "0.0.0",
   "scripts": {
-    "ng": "ng",
-    "start": "ng serve",
     "build": "node scripts/build.js",
     "test": "node scripts/test.js",
-    "prepare": "node scripts/prepare.js",
-    "lint": "ng lint",
-    "e2e": "ng e2e"
+    "prepare": "node scripts/prepare.js"
   },
   "private": true,
   "dependencies": {

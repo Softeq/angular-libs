@@ -519,19 +519,3 @@ It is encouraged to provide factory functions to create custom data types, the s
 ## Supported environments
 
 * for Angular use [`@softeq/angular-data-types`](../angular-data-types-lib/README.md)
-
-## Build
-
-Run `ng build data-types-lib` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Publishing
-
-After building your library with `ng build data-types-lib`, go to the dist folder `cd dist/data-types-lib` and run `npm publish`.
-
-## Running unit tests
-
-Run `ng test data-types-lib` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).

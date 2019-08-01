@@ -1,24 +1,6 @@
-# TestDataLib
+# @softeq/test
 
-This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.0.1.
+**THIS IS A PRIVATE LIBRARY**
 
-## Code scaffolding
+This library defines data used in tests.
 
-Run `ng generate component component-name --project test-data-lib` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module --project test-data-lib`.
-> Note: Don't forget to add `--project test-data-lib` or else it will be added to the default project in your `angular.json` file. 
-
-## Build
-
-Run `ng build test-data-lib` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Publishing
-
-After building your library with `ng build test-data-lib`, go to the dist folder `cd dist/test-data-lib` and run `npm publish`.
-
-## Running unit tests
-
-Run `ng test test-data-lib` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).

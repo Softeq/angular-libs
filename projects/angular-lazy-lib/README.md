@@ -277,24 +277,3 @@ When you call `load` function, `@angular/router` **tries to leave current route*
 ### Do you really need this library?
 
 > In general this library proposes kind of workaround and should be considered as extreme measure. May be it is better to solve initial problem in the field of UX. I believe, even example given here above points to bad UX.
-
-## Code scaffolding
-
-Run `ng generate component component-name --project angular-lazy-lib` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module --project angular-lazy-lib`.
-> Note: Don't forget to add `--project angular-lazy-lib` or else it will be added to the default project in your `angular.json` file. 
-
-## Build
-
-Run `ng build angular-lazy-lib` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Publishing
-
-After building your library with `ng build angular-lazy-lib`, go to the dist folder `cd dist/angular-lazy-lib` and run `npm publish`.
-
-## Running unit tests
-
-Run `ng test angular-lazy-lib` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).

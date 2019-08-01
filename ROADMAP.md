@@ -7,7 +7,6 @@
   * Document API/generate typedoc?
 * Simplify publish process
   * `semantic-release`?
-  * order of built libraries
 * Actualize `package.json`s
 * Integrate CI
 

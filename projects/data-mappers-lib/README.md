@@ -2,7 +2,7 @@
 
 `@softeq/data-mappers` is a lightweight library which simplifies serialization/deserialization tasks.
 
-### Problem
+### Motivation
 
 One of task developer has to solve from day to day is data serialization. For example, developer needs to transform data to serializable view
 * to send data via HTTP client
@@ -323,19 +323,3 @@ You can write own implementation of `HttpDataMapper`, look at implementation of 
 
 ## Integration libraries for `HttpData`/`HttpDataMapper`
 * for Angular use [`@softeq/angular-http-data`](../angular-http-data-lib/README.md)
-
-## Build
-
-Run `ng build data-mappers-lib` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Publishing
-
-After building your library with `ng build data-mappers-lib`, go to the dist folder `cd dist/data-mappers-lib` and run `npm publish`.
-
-## Running unit tests
-
-Run `ng test data-mappers-lib` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
