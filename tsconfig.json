@@ -43,7 +43,7 @@
       "@softeq/angular-masked-data-types": [
         "dist/angular-masked-data-types-lib"
       ],
-      "test-data": [
+      "@softeq/test-data": [
         "dist/test-data-lib"
       ],
       "@softeq/angular-lazy": [

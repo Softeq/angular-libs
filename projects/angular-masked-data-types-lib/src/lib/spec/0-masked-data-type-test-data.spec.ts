@@ -4,7 +4,7 @@
 import { TestBed, TestModuleMetadata } from '@angular/core/testing';
 import { TranslateModule } from '@ngx-translate/core';
 import { SofteqMlsRiModule } from '@softeq/angular-mls-ri';
-import { setupTestLocaleData, setupTestTranslationData } from 'test-data';
+import { setupTestLocaleData, setupTestTranslationData } from '@softeq/test-data';
 import { SofteqMaskedDataTypesModule } from '../softeq-masked-data-types.module';
 import { DataType } from '@softeq/data-types';
 import { SofteqDataTypesModuleConfig, SofteqDataTypesModule, DataTypeService } from '@softeq/angular-data-types';

@@ -5,7 +5,7 @@
 
 import { Hash } from '@softeq/types';
 
-import { switchLocale } from 'test-data';
+import { switchLocale } from '@softeq/test-data';
 import { SofteqDataTypesModule } from '../softeq-data-types.module';
 import { getLocale } from '@softeq/mls';
 import { getDataType, getDataTypeService, setupTestTypeModule } from './0-data-type-test-data.spec';

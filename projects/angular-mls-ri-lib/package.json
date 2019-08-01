@@ -7,5 +7,8 @@
     "@ngx-translate/core": "^11.0.1",
     "@softeq/types": "^0.0.1",
     "@softeq/mls": "^0.0.1"
+  },
+  "devDependencies": {
+    "@softeq/test-data": "^0.0.1"
   }
 }

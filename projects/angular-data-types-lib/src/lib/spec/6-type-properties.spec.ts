@@ -3,7 +3,7 @@
 
 import { Hash } from '@softeq/types';
 import { getDataType, getDataTypeService, setupTestTypeModule } from './0-data-type-test-data.spec';
-import { switchLocale } from 'test-data';
+import { switchLocale } from '@softeq/test-data';
 import { DataType, numberType } from '@softeq/data-types';
 import { DATA_TYPE_INITIALIZER, DataTypeInitializer } from '../services/data-type-context.service';
 

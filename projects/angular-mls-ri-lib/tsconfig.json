@@ -4,7 +4,7 @@
     "paths": {
       "@softeq/types": ["projects/types-lib/src/public-api"],
       "@softeq/mls": ["projects/mls-lib/src/public-api"],
-      "test-data": ["projects/test-data-lib/src/public-api"]
+      "@softeq/test-data": ["projects/test-data-lib/src/public-api"]
     }
   }
 }

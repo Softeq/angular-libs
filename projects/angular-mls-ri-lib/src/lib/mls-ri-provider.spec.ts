@@ -5,7 +5,7 @@ import { MlsDateTimeLocalization, getLocale, MlsProvider, MlsTranslator, MlsNumb
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { TestBed } from '@angular/core/testing';
 import { SofteqMlsRiModule } from './softeq-mls-ri.module';
-import { LOCALE_EN_AU, LOCALE_EN_US, LOCALE_RU_RU, setupTestLocaleData, setupTestTranslationData, switchLocale } from 'test-data';
+import { LOCALE_EN_AU, LOCALE_EN_US, LOCALE_RU_RU, setupTestLocaleData, setupTestTranslationData, switchLocale } from '@softeq/test-data';
 import isNil from 'lodash/isNil';
 import omitBy from 'lodash/omitBy';
 

@@ -5,17 +5,20 @@ const fs = require('fs');
 const path = require('path');
 const util = require('util');
 
-const { isNil } = require('lodash');
+const { isNil, max } = require('lodash');
 
 const fsReadFile = util.promisify(fs.readFile);
+const fsAccess = util.promisify(fs.access);
 const fsStat = util.promisify(fs.stat);
 const fsReaddir = util.promisify(fs.readdir);
 const fsCopyFile = util.promisify(fs.copyFile);
 
 const copyFile = (filePath, dirPath) => fsCopyFile(filePath, path.join(dirPath, path.basename(filePath)));
 
-const fsLastModifiedDate = (path) => {
-  const queue = [path];
+const statLastModifiedDateMs = (stat) => max([stat.birthtimeMs, stat.atimeMs, stat.mtimeMs, stat.ctimeMs]);
+
+const fsLastModifiedDate = (startDir) => {
+  const queue = [startDir];
   let minDateMs = 0;
 
   let complete;
@@ -34,18 +37,23 @@ const fsLastModifiedDate = (path) => {
       return;
     }
 
-    fsStat(path)
-      .then((stat) => {
-        if (stat.isFile()) {
-          const lastModifiedDateMs = statLastModifiedDateMs(stat);
-          if (lastModifiedDateMs > minDateMs) {
-            minDateMs = lastModifiedDateMs;
-          }
-        } else if (stat.isDirectory()) {
-          readDirectory(path);
-        }
-      })
-      .catch(error);
+    fsAccess(path)
+      .then(() =>
+        fsStat(path)
+          .then((stat) => {
+            if (stat.isFile()) {
+              const lastModifiedDateMs = statLastModifiedDateMs(stat);
+              if (lastModifiedDateMs > minDateMs) {
+                minDateMs = lastModifiedDateMs;
+              }
+
+              readNext();
+            } else if (stat.isDirectory()) {
+              readDirectory(path);
+            }
+          })
+          .catch(error))
+      .catch(() => readNext());
   };
 
   const readDirectory = (dirPath) => {
@@ -62,4 +70,4 @@ const fsLastModifiedDate = (path) => {
   return promise;
 };
 
-module.exports = { copyFile, fsLastModifiedDate };
+module.exports = { copyFile, fsReadFile, fsLastModifiedDate };

@@ -11,9 +11,6 @@ sandbox(() => {
 
   return loadPackageTree(libName)
     .then(validateLibraryPackage)
-    .then((pkg) =>
-      Promise.all([
-        buildPackageTreeIfChanged(pkg),
-        copyFile(getProjectPath('LICENSE'), getPackageDistPath(pkg)),
-      ]));
+    .then(buildPackageTreeIfChanged)
+    .then((pkg) => copyFile(getProjectPath('LICENSE'), getPackageDistPath(pkg)));
 });

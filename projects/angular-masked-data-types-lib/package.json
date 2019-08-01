@@ -9,5 +9,9 @@
     "@softeq/data-types": "^0.0.1",
     "@softeq/angular-data-types": "^0.0.1",
     "lodash": "^4.17.11"
+  },
+  "devDependencies": {
+    "@softeq/angular-mls-ri": "^0.0.1",
+    "@softeq/test-data": "^0.0.1"
   }
 }
