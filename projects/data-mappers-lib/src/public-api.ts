@@ -35,4 +35,7 @@ export {
   httpMapperOf,
   DEFAULT_HTTP_SERIALIZATION_TYPE,
   DEFAULT_HTTP_DESERIALIZATION_TYPE,
+  toIsoDate,
+  toIsoDateTime,
+  toIsoTime,
 } from './lib/mappers';
