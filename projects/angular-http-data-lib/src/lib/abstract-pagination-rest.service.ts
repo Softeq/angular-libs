@@ -5,7 +5,7 @@ import { HttpHeaders, HttpResponse, } from '@angular/common/http';
 
 import { Observable, of } from 'rxjs';
 import { filter, switchMap } from 'rxjs/operators';
-import { SlicedData, SlicedDataQuery, SlicedDataSource } from './data-source';
+import { ResultSet, DataQuery, DataSource, createDataSource } from './data-source';
 import { createHttpData, DataMapper, } from '@softeq/data-mappers';
 import {
   createGenericRequest,
@@ -29,7 +29,7 @@ export type HttpSlicedDataRequestConfig<Req, Resp> = HttpRequestConfig<Req, Resp
  * Definition of HTTP request operation having given query which returns pageable result set.
  */
 export interface HttpSlicedDataQueryRequestConfig<Req, Resp> extends HttpSlicedDataRequestConfig<Req, Resp> {
-  query: SlicedDataQuery;
+  query: DataQuery;
 }
 
 /**
@@ -50,9 +50,9 @@ export abstract class AbstractPaginationRestService extends AbstractRestService 
    *             Slice is defined by interval (from ... to)
    * * paginable request adds additional query parameter (sortBy) which defines how to sort data
    * * paginable request adds range header (Range) which defines slice of data that should be retrieved
-   * * paginable request always returns instance of {@link SlicedData}
+   * * paginable request always returns instance of {@link ResultSet}
    */
-  protected createSlicedDataRequest<S, R>(config: HttpSlicedDataQueryRequestConfig<S, R>): Observable<SlicedData<R>> {
+  protected createSlicedDataRequest<S, R>(config: HttpSlicedDataQueryRequestConfig<S, R>): Observable<ResultSet<R>> {
     const { method, url, query, body, requestMapper, responseMapper } = config;
 
     const httpRequestMapper = requestMapper ? wrapIntoHttpDataMapper(requestMapper) : void 0;
@@ -62,9 +62,9 @@ export abstract class AbstractPaginationRestService extends AbstractRestService 
     let request = createGenericRequest(method, this.url(url), body, httpRequestMapper, httpResponseMapper);
 
     // add sorting as query parameter
-    if (query.sorting) {
+    if (query.sort) {
       request = request.clone({
-        url: mergeSortByParameter(request.url, query.sorting),
+        url: mergeSortByParameter(request.url, query.sort),
       });
     }
 
@@ -111,16 +111,16 @@ export abstract class AbstractPaginationRestService extends AbstractRestService 
   }
 
   /**
-   * Creates {@link SlicedDataSource} based on GET requests.
+   * Creates {@link DataSource} based on GET requests.
    * Each request use provided mapper to deserialize its response.
    *
    * @param path relative url for endpoint
    * @param responseMapper mapper for response entity
    */
   protected createSlicedDataSourceGet<Resp>(path: string,
-                                            responseMapper: DataMapper<Resp[], any>): SlicedDataSource<Resp>;
+                                            responseMapper: DataMapper<Resp[], any>): DataSource<Resp>;
   /**
-   * Creates {@link SlicedDataSource} based on GET requests.
+   * Creates {@link DataSource} based on GET requests.
    *
    * This method allows to pass additional parameters common for each request.
    * Body is serialized using provided request mapper (optional).
@@ -135,11 +135,11 @@ export abstract class AbstractPaginationRestService extends AbstractRestService 
   protected createSlicedDataSourceGet<Req, Resp>(path: string,
                                                  body: Req,
                                                  requestMapper: DataMapper<Req, any> | undefined,
-                                                 responseMapper: DataMapper<Resp[], any>): SlicedDataSource<Resp>;
+                                                 responseMapper: DataMapper<Resp[], any>): DataSource<Resp>;
   protected createSlicedDataSourceGet<Req, Resp>(path: string,
                                                  bodyOrResponseMapper: Req | DataMapper<Resp[], any>,
                                                  requestMapper?: DataMapper<Req, any>,
-                                                 responseMapper?: DataMapper<Resp[], any>): SlicedDataSource<Resp> {
+                                                 responseMapper?: DataMapper<Resp[], any>): DataSource<Resp> {
 
     return this.createSlicedDataSource({
       method: RequestMethod.Get,
@@ -151,7 +151,7 @@ export abstract class AbstractPaginationRestService extends AbstractRestService 
   }
 
   /**
-   * Creates {@link SlicedDataSource} based on POST requests.
+   * Creates {@link DataSource} based on POST requests.
    *
    * This method allows to pass additional parameters common for each request.
    * Body is serialized using provided request mapper.
@@ -166,7 +166,7 @@ export abstract class AbstractPaginationRestService extends AbstractRestService 
   protected createSlicedDataSourcePost<S, R>(path: string,
                                              body: S,
                                              requestMapper: DataMapper<S, any>,
-                                             responseMapper: DataMapper<R[], any>): SlicedDataSource<R> {
+                                             responseMapper: DataMapper<R[], any>): DataSource<R> {
     return this.createSlicedDataSource({
       method: RequestMethod.Post,
       url: path,
@@ -177,7 +177,7 @@ export abstract class AbstractPaginationRestService extends AbstractRestService 
   }
 
   /**
-   * Creates {@link SlicedDataSource} based on PUT requests.
+   * Creates {@link DataSource} based on PUT requests.
    *
    * This method allows to pass additional parameters common for each request.
    * Body is serialized using provided request mapper.
@@ -192,7 +192,7 @@ export abstract class AbstractPaginationRestService extends AbstractRestService 
   protected createSlicedDataSourcePut<S, R>(path: string,
                                             body: S,
                                             requestMapper: DataMapper<S, any>,
-                                            responseMapper: DataMapper<R[], any>): SlicedDataSource<R> {
+                                            responseMapper: DataMapper<R[], any>): DataSource<R> {
     return this.createSlicedDataSource({
       method: RequestMethod.Put,
       url: path,
@@ -203,18 +203,16 @@ export abstract class AbstractPaginationRestService extends AbstractRestService 
   }
 
   /**
-   * Creates {@link SlicedDataSource} based on the provided config.
-   * One instance of {@link SlicedDataSource} can be used to request data
-   * for different queries ({@link SlicedDataQuery}).
+   * Creates {@link DataSource} based on the provided config.
+   * One instance of {@link DataSource} can be used to request data
+   * for different queries ({@link DataQuery}).
    * Each performed query use configuration provided in the config parameter.
    * See {@link #createSlicedDataRequest} for details.
    */
-  protected createSlicedDataSource<S, R>(config: HttpSlicedDataRequestConfig<S, R>): SlicedDataSource<R> {
-    const select = (query: SlicedDataQuery) => this.createSlicedDataRequest({
+  protected createSlicedDataSource<S, R>(config: HttpSlicedDataRequestConfig<S, R>): DataSource<R> {
+    return createDataSource((query: DataQuery) => this.createSlicedDataRequest({
       ...config,
       query,
-    });
-
-    return { select };
+    }));
   }
 }

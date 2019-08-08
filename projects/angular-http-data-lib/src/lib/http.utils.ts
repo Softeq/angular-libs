@@ -2,6 +2,7 @@
 // http://www.softeq.com
 
 import isNil from 'lodash/isNil';
+import isArray from 'lodash/isArray';
 import omitBy from 'lodash/omitBy';
 import {
   HttpErrorResponse,
@@ -23,7 +24,7 @@ import {
   httpMapperOf,
   isHttpMapper
 } from '@softeq/data-mappers';
-import { SlicedDataQuerySorting, SortDirection } from './data-source';
+import { DataQuerySort, SortDirection } from './data-source';
 
 export const HTTP_STATUS_NO_CONTENT = 204;
 export const HTTP_STATUS_ERROR_START = 400;
@@ -204,12 +205,13 @@ export function mergeUrl(...segments: string[]): string {
   );
 }
 
-export function serializeSortBy(sorting: SlicedDataQuerySorting): string {
-  return `${sorting.direction === SortDirection.Descending ? '-' : '+'}${sorting.field}`;
+export function serializeSortBy(sort: DataQuerySort | DataQuerySort[]): string {
+  const sortArray = isArray(sort) ? sort : [sort];
+  return sortArray.map(({ field, direction }) => `${direction === SortDirection.Descending ? '-' : '+'}${field}`).join(',');
 }
 
-export function mergeSortByParameter(url: string, sorting?: SlicedDataQuerySorting): string {
-  return sorting ? parametrizeUrl(url, { sortBy: serializeSortBy(sorting) }) : url;
+export function mergeSortByParameter(url: string, sort?: DataQuerySort | DataQuerySort[]): string {
+  return sort ? parametrizeUrl(url, { sortBy: serializeSortBy(sort) }) : url;
 }
 
 /**

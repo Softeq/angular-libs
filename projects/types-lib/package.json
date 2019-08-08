@@ -1,6 +1,6 @@
 {
   "name": "@softeq/types",
-  "version": "1.0.0-beta.1",
+  "version": "1.0.0-beta.2",
   "description": "Types-only library which defines framework-agnostic types.",
   "keywords": ["typescript", "types"],
   "peerDependencies": {},

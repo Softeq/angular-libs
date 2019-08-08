@@ -9,6 +9,13 @@
   * `semantic-release`?
 * Actualize `package.json`s
 * Integrate CI
+* Build process
+  * if change time of dependency is later than change time of library, library should be rebuild
+* Implement `npm run watch` command
+ 
+## `@softeq/types`
+
+Investigate whether it is possible to integrate types by default without `import`ing.
 
 ## `@softeq/data-mappers`
 

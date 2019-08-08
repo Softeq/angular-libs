@@ -1,6 +1,6 @@
 {
   "name": "@softeq/angular-http-data",
-  "version": "1.0.0-beta.1",
+  "version": "1.0.0-beta.2",
   "description": "Angular support of @softeq/data-mappers",
   "keywords": [
     "data mapping",
@@ -18,7 +18,8 @@
     "@angular/common": "^8.0.0",
     "@angular/core": "^8.0.0",
     "lodash": "^4.17.0",
-    "@softeq/data-mappers": "^1.0.0-beta.1"
+    "@softeq/types": "^1.0.0-beta.2",
+    "@softeq/data-mappers": "^1.0.0-beta.2"
   },
   "license": "MIT",
   "repository": {

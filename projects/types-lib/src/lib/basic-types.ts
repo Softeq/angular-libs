@@ -30,3 +30,4 @@ export type BiTransformFn<T, U, R> = (t: T, u: U) => R;
 
 export type Constructor<T> = new (...args: any[]) => T;
 
+export type ComparatorFn<T> = (a: T, b: T) => number;
