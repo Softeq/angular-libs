@@ -53,6 +53,7 @@ but in this case you have to map requests/responses manually.
 * In order to map `HttpRequest`
   ```
   mergeRequestWithMapper<S, R>(request: HttpRequest<S>,
+                               body?: S,
                                requestMapper?: HttpDataMapper<S>,
                                responesMapper?: HttpDataMapper<R>): HttpRequest<any>
   ```

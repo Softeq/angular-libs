@@ -142,7 +142,7 @@ function applyHttpHeaders(originalHeaders: HttpHeaders, headersData: HeadersData
  * * for request methods body is always passed via body of HTTP request.
  *
  * @param method target HTTP method
- * @param path relative endpoint URL
+ * @param url relative endpoint URL
  * @param body request entity
  * @param requestMapper mapper for mapping request entity into body
  * @param responseMapper mapper for mapping response entity into body
@@ -153,16 +153,17 @@ export function createGenericRequest<S, R>(method: RequestMethod,
                                            body?: S,
                                            requestMapper?: HttpDataMapper<S>,
                                            responseMapper?: HttpDataMapper<R>): HttpRequest<any> {
-  return mergeRequestWithMapper(new HttpRequest(method, url, body), requestMapper, responseMapper);
+  return mergeRequestWithMapper(new HttpRequest(method, url, null), body, requestMapper, responseMapper);
 }
 
 export function mergeRequestWithMapper<S, R>(request: HttpRequest<S>,
+                                             body?: S,
                                              requestMapper?: HttpDataMapper<S>,
                                              responseMapper?: HttpDataMapper<R>): HttpRequest<any> {
   let httpHeaders = createDefaultHeaders(requestMapper && requestMapper.serializationType);
   let serializedBody: any;
 
-  const { method, body } = request;
+  const { method } = request;
 
   if (body && requestMapper) {
     const httpData = requestMapper.serialize(body);
