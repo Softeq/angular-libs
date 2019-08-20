@@ -1,6 +1,6 @@
 {
   "name": "@softeq/angular-data-types",
-  "version": "1.0.0-beta.1",
+  "version": "1.0.0-beta.2",
   "description": "Centralizes and promotes work with similar primitive data",
   "keywords": [
     "localization",

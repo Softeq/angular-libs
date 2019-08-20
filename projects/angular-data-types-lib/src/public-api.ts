@@ -9,4 +9,5 @@ export { DATA_TYPE_DEFAULT_VALIDATE_OPTION, DataTypeDirective, DataTypeValidateO
 export { DataFormatPipe } from './lib/pipes/data-format.pipe';
 export { DATA_TYPE_INITIALIZER, DATA_TYPE_USE_STATIC, DataTypeInitializer } from './lib/services/data-type-context.service';
 export { DATA_TYPE_SET, DataTypeService } from './lib/services/data-type.service';
+export { formValidatorFrom, FormValidatorTypeInitializerService } from './lib/services/form-validator-type-initializer.service';
 export { SofteqDataTypesModuleConfig, SofteqDataTypesModule } from './lib/softeq-data-types.module';

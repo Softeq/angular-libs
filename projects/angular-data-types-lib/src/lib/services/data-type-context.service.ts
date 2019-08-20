@@ -17,16 +17,9 @@ export const DATA_TYPE_INITIALIZER = new InjectionToken<DataTypeInitializer>('Da
 
 @Injectable({ providedIn: 'root' })
 export class DataTypeContextService implements DataTypeContext {
-  private initializers: DataTypeInitializer[];
-
   constructor(readonly mlsProvider: MlsProvider,
               @Inject(DATA_TYPE_USE_STATIC) readonly useStatic: boolean,
-              @Optional() @Inject(DATA_TYPE_INITIALIZER) initializer?: DataTypeInitializer | DataTypeInitializer[]) {
-    if (Array.isArray(initializer)) {
-      this.initializers = initializer;
-    } else if (initializer) {
-      this.initializers = [initializer];
-    }
+              @Optional() @Inject(DATA_TYPE_INITIALIZER) private initializers?: DataTypeInitializer[]) {
   }
 
   initType(type: DataType<any>): Maybe<Hash<any>> {

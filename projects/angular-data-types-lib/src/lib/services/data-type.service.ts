@@ -4,6 +4,7 @@
 import { Inject, Injectable, InjectionToken } from '@angular/core';
 
 import each from 'lodash/each';
+import flatten from 'lodash/flatten';
 import isNil from 'lodash/isNil';
 import uniqueId from 'lodash/uniqueId';
 
@@ -20,9 +21,9 @@ export class DataTypeService {
   private typeToUniqueName = new Map<DataType<any>, string>();
   private typeInstances: Hash<Hash<DataType<any>>> = {};
 
-  constructor(@Inject(DATA_TYPE_SET) typeSet: Hash<DataType<any>> | Hash<DataType<any>>[],
+  constructor(@Inject(DATA_TYPE_SET) typeSet: Array<Hash<DataType<any>> | Hash<DataType<any>>[]>,
               private context: DataTypeContextService) {
-    const typeSets = Array.isArray(typeSet) ? typeSet : [typeSet];
+    const typeSets = flatten<Hash<DataType<any>>>(typeSet);
 
     typeSets.forEach((set) => {
       each(set, (type, name: string) => {

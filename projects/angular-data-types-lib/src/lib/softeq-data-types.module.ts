@@ -12,7 +12,6 @@ import { DATA_TYPE_SET } from './services/data-type.service';
 export interface SofteqDataTypesModuleConfig {
   typeSet?: SupplierFn<Hash<DataType<any>> | Hash<DataType<any>>[]>;
   useStatic?: boolean;
-  initializer?: Type<DataTypeInitializer> | any;
   defaultValidateOption?: DataTypeValidateOption;
 }
 
@@ -31,13 +30,12 @@ export class SofteqDataTypesModule {
     return {
       ngModule: SofteqDataTypesModule,
       providers: [
-        { provide: DATA_TYPE_SET, useFactory: config.typeSet, deps: [] },
+        config.typeSet ? { provide: DATA_TYPE_SET, useFactory: config.typeSet, deps: [], multi: true } : [],
         { provide: DATA_TYPE_USE_STATIC, useValue: config.useStatic || false },
         {
           provide: DATA_TYPE_DEFAULT_VALIDATE_OPTION,
           useValue: config.defaultValidateOption ? config.defaultValidateOption : DataTypeValidateOption.Format,
         },
-        config.initializer ? { provide: DATA_TYPE_INITIALIZER, useExisting: config.initializer } : [],
       ],
     };
   }

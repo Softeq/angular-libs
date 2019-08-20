@@ -60,7 +60,7 @@ export class MaskedTextTypeImpl extends TextTypeImpl implements MaskedTextType {
   init(locale: Locale, context: DataTypeContext): void {
     const definition = (this.definition as MaskedTextTypeDefinition);
     if (isNil(definition.mask) && isNil(definition.pipe)) {
-      throw new Error('MaskedTextType should at least one of mask and pipe');
+      throw new Error('MaskedTextType should have at least one of mask and pipe');
     }
 
     super.init(locale, context);
