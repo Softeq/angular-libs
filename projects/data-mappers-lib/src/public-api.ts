@@ -38,4 +38,10 @@ export {
   toIsoDate,
   toIsoDateTime,
   toIsoTime,
+  serializeData,
+  deserializeData,
+  numberMapper,
+  booleanMapper,
+  jsonMapper,
+  jsonMapperOf,
 } from './lib/mappers';

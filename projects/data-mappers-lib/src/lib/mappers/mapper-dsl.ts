@@ -16,6 +16,7 @@ import { FileHttpDataMapper } from './file-http-data-mapper';
 import { HttpDataMapper } from './http-data-mapper';
 import { ETagHttpDataMapper } from './e-tag-http-data-mapper';
 import { ValueMapper } from './value-mapper';
+import { JsonMapper } from './json-mapper';
 
 
 const IDENTITY_MAPPER = createMapper({
@@ -31,6 +32,18 @@ const CLONE_MAPPER = createMapper({
 const NONE_MAPPER = createMapper({
   serialize: noop,
   deserialize: noop,
+});
+
+const JSON_MAPPER = new JsonMapper();
+
+const BOOLEAN_MAPPER = createMapper({
+  serialize: (b: boolean) => b.toString(),
+  deserialize: (str) => str === 'true',
+});
+
+const NUMBER_MAPPER = createMapper({
+  serialize: (n: number) => n.toString(),
+  deserialize: (str) => Number(str),
 });
 
 /**
@@ -133,6 +146,34 @@ export function valueMapper<T>(serializedToValue: { [name: string]: T }): DataMa
 }
 
 /**
+ * Returns mapper that transform any object into JSON string and vice versa
+ */
+export function jsonMapper<T>(): DataMapper<T, string> {
+  return JSON_MAPPER as any;
+}
+
+/**
+ * Returns mapper that transform object into JSON string using provided mapper and vice versa
+ */
+export function jsonMapperOf<T>(baseMapper?: DataMapper<T, any>): DataMapper<T, string> {
+  return baseMapper ? new JsonMapper(baseMapper) : jsonMapper();
+}
+
+/**
+ * Returns mapper to transform boolean to string and vice versa
+ */
+export function booleanMapper(): DataMapper<boolean, string> {
+  return BOOLEAN_MAPPER;
+}
+
+/**
+ * Returns mapper to transform number to string and vice versa
+ */
+export function numberMapper(): DataMapper<number, string> {
+  return NUMBER_MAPPER;
+}
+
+/**
  * Allows to create custom mapper. Actually this method does nothing,
  * but I believe allows to write more ideologically correct code.
  *
@@ -144,4 +185,18 @@ export function createMapper<T>(mapper: DataMapper<T, any>): DataMapper<T, any> 
 
 export function fileMapper(mimeType: string = 'application/octet-stream'): DataMapper<File, any> {
   return new FileHttpDataMapper(IDENTITY_MAPPER, mimeType);
+}
+
+export function serializeData<T, S = T>(data: T, mapper?: DataMapper<T, S>): S {
+  if (data) {
+    return mapper ? mapper.serialize(data) : data as any;
+  }
+}
+
+export function deserializeData<S>(data: S): S;
+export function deserializeData<T, S>(data: S, mapper: DataMapper<T, S>): T;
+export function deserializeData<T, S>(data: S, mapper?: DataMapper<T, S>): T {
+  if (data) {
+    return mapper ? mapper.deserialize(data) : data as any;
+  }
 }

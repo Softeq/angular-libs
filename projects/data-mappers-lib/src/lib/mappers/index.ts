@@ -10,3 +10,4 @@ export * from './http-data-mapper';
 export * from './e-tag-http-data-mapper';
 export * from './mapper-dsl';
 export * from './file-http-data-mapper';
+export * from './json-mapper';
