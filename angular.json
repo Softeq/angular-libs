@@ -352,6 +352,41 @@
           }
         }
       }
+    },
+    "angular-route-data-lib": {
+      "projectType": "library",
+      "root": "projects/angular-route-data-lib",
+      "sourceRoot": "projects/angular-route-data-lib/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/angular-route-data-lib/tsconfig.lib.json",
+            "project": "projects/angular-route-data-lib/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/angular-route-data-lib/src/test.ts",
+            "tsConfig": "projects/angular-route-data-lib/tsconfig.spec.json",
+            "karmaConfig": "projects/angular-route-data-lib/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/angular-route-data-lib/tsconfig.lib.json",
+              "projects/angular-route-data-lib/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }
   },
   "defaultProject": "data-lib"

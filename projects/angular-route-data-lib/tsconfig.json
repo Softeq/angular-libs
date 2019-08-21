@@ -1,0 +1,8 @@
+{
+  "extends": "./tsconfig.lib.json",
+  "compilerOptions": {
+    "paths": {
+      "@softeq/types": ["projects/types-lib/src/public-api"]
+    }
+  }
+}

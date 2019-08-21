@@ -28,6 +28,12 @@
       "@softeq/data-mappers": [
         "dist/data-mappers-lib"
       ],
+      "@softeq/angular-http-data": [
+        "dist/angular-http-data-lib"
+      ],
+      "@softeq/angular-route-data": [
+        "dist/angular-route-data-lib"
+      ],
       "@softeq/mls": [
         "dist/mls-lib"
       ],
