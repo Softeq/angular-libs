@@ -1,24 +1,16 @@
-# AngularRouteDataLib
+# @softeq/angular-route-data
 
-This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.0.1.
+`@softeq/angular-route-data` allows to keep URL up to date with the page content.
 
-## Code scaffolding
+#### Motivation
 
-Run `ng generate component component-name --project angular-route-data-lib` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module --project angular-route-data-lib`.
-> Note: Don't forget to add `--project angular-route-data-lib` or else it will be added to the default project in your `angular.json` file. 
+Let's consider the following example to understand what problem this library tries to solve.  
+Imagine we have a page under the round `/heroes` displaying list of heroes and toggle that allows to *show only active heroes*.
 
-## Build
+![](docs/angular-route-data.png)
 
-Run `ng build angular-route-data-lib` to build the project. The build artifacts will be stored in the `dist/` directory.
+When user turns switch on we need to update URL to `/heroes?onlyActive=true`. In addition user expects when he pastes this URL into browser address bar he goes to the same page having switch *show only active heroes* on.  
+In the real world page can have more criteria, like name of hero, set of checkboxes, etc.
+Such behavior allows user to keep bookmarkable URLs or send URLs via messenger. For developer it can simplify implementation of back behavior (when user press on browser *back* button).
 
-## Publishing
-
-After building your library with `ng build angular-route-data-lib`, go to the dist folder `cd dist/angular-route-data-lib` and run `npm publish`.
-
-## Running unit tests
-
-Run `ng test angular-route-data-lib` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+*DOCUMENTATION IS IN PROGRESS*
