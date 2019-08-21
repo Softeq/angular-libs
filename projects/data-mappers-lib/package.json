@@ -1,6 +1,6 @@
 {
   "name": "@softeq/data-mappers",
-  "version": "1.0.0-beta.3",
+  "version": "1.0.0-beta.4",
   "main": "./bundles/data-mappers-lib.umd.js",
   "description": "Lightweight library which simplifies serialization/deserialization tasks.",
   "keywords": ["data mapping", "data mappers", "serialization", "deserialization", "json"],

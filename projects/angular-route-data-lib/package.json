@@ -1,6 +1,6 @@
 {
   "name": "@softeq/angular-route-data",
-  "version": "1.0.0-beta.1",
+  "version": "1.0.0-beta.2",
   "description": "Allows to keep URL up to date with the page content",
   "keywords": [
     "data mapping",
@@ -17,7 +17,7 @@
     "@angular/core": "^8.0.0",
     "lodash": "^4.17.0",
     "@softeq/types": "^1.0.0-beta.2",
-    "@softeq/data-mappers": "^1.0.0-beta.3"
+    "@softeq/data-mappers": "^1.0.0-beta.4"
   },
   "license": "MIT",
   "repository": {
