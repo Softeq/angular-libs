@@ -3,7 +3,7 @@
   "compilerOptions": {
     "paths": {
       "@softeq/mls": ["projects/mls-lib/src/public-api"],
-      "@softeq/types": ["projects/types-lib/src/public-api"]
+      "@softeq/types": ["projects/types-lib/src/index"]
     }
   }
 }

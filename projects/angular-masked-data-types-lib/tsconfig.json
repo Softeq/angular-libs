@@ -5,7 +5,7 @@
       "@softeq/angular-mls-ri": ["projects/angular-mls-ri-lib/src/public-api"],
       "@softeq/mls": ["projects/mls-lib/src/public-api"],
       "@softeq/angular-data-types": ["projects/angular-data-types-lib/src/public-api"],
-      "@softeq/types": ["projects/types-lib/src/public-api"]
+      "@softeq/types": ["projects/types-lib/src/index"]
     }
   }
 }

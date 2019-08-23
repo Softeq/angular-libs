@@ -4,7 +4,7 @@
     "paths": {
       "@softeq/angular-mls-ri": ["projects/angular-mls-ri-lib/src/public-api"],
       "@softeq/mls": ["projects/mls-lib/src/public-api"],
-      "@softeq/types": ["projects/types-lib/src/public-api"],
+      "@softeq/types": ["projects/types-lib/src/index"],
       "@softeq/data-types": ["projects/data-types-lib/src/public-api"]
     }
   }
