@@ -1,6 +1,6 @@
 {
   "name": "@softeq/angular-route-data",
-  "version": "1.0.0-beta.2",
+  "version": "1.0.0-beta.3",
   "description": "Allows to keep URL up to date with the page content",
   "keywords": [
     "data mapping",
